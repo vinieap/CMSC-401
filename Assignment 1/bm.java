@@ -1,35 +1,22 @@
+//Vinit Patel
 import java.util.Scanner;
-import java.io.File;
 
 public class bm {
-	public static void main(String[] args) throws Exception {
-		File inputFile = new File("numArrays.txt");
-		Scanner scan = new Scanner(inputFile);
-		String[] strArray;
-		int[] numArray;
-
-		while(scan.hasNextLine()) {
-			strArray = scan.nextLine().split(" ");
-			numArray = new int[strArray.length];
-			for(int i = 0; i < numArray.length; i++) {
-				numArray[i] = Integer.parseInt(strArray[i]);
-			}
-			int candidate = getCandidate(numArray);
-			System.out.println(candidate + " is the majority element: " + isMajorityElement(numArray, candidate));
-			System.out.println("----------------------------------------------------------------------");
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int nums = scan.nextInt();
+		int[] numArray = new int[nums];
+		for(int i = 0; i < nums; i++) {
+			numArray[i] = scan.nextInt();
 		}
+		System.out.println(isMajorityElement(numArray,getCandidate(numArray)));
 	}
 	public static int getCandidate(int[] numArray) {
 		int candidate = numArray[0];
 		int counter = 1;
-
 		for(int i = 1; i < numArray.length-1; i++) {
-			if(numArray[i] == candidate) {
-				counter++;
-			}
-			else {
-				counter--;
-			}
+			if(numArray[i] == candidate) { counter++; }
+			else { counter--; }
 			if(counter == 0) {
 				candidate = numArray[i];
 				counter = 1;
@@ -37,16 +24,12 @@ public class bm {
 		}
 		return candidate;
 	}
-	public static boolean isMajorityElement(int[] numArray, int candidate) {
+	public static int isMajorityElement(int[] numArray, int candidate) {
 		int counter = 0;
 		for(int x : numArray) {
-			if(x == candidate) {
-				counter++;
-			}
-			if(counter > numArray.length/2) {
-				return true;
-			}
+			if(x == candidate) { counter++; }
+			if(counter > numArray.length/2) { return candidate; }
 		}
-		return false;
+		return -1;
 	}
 }
