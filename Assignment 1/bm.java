@@ -6,9 +6,7 @@ public class bm {
 		Scanner scan = new Scanner(System.in);
 		int nums = scan.nextInt();
 		int[] numArray = new int[nums];
-		for(int i = 0; i < nums; i++) {
-			numArray[i] = scan.nextInt();
-		}
+		for(int i = 0; i < nums; i++) { numArray[i] = scan.nextInt(); }
 		System.out.println(isMajorityElement(numArray,getCandidate(numArray)));
 	}
 	public static int getCandidate(int[] numArray) {
