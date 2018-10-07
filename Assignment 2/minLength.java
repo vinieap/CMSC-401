@@ -1,3 +1,5 @@
+//Vinit Patel
+
 import java.util.Scanner;
 
 public class minLength{
